@@ -1,0 +1,66 @@
+
+        [When(@"I Upload the file from Localdrive")]
+        public void WhenIUploadTheFileFromLocaldrive()
+        {
+
+            // FILE UPLOADING USING SENDKEYS ....
+            IWebElement browse = Driver.FindElement(By.XPath("//input[@id='file-upload']"));
+
+            Thread.Sleep(5000);
+            browse.SendKeys(@"C:\Users\dbisht\OneDrive - loanDepot\Desktop\Test1.txt");
+            Thread.Sleep(3000);
+        }
+
+        [When(@"I Upload the file from Localdrive1")]
+        public void WhenIUploadTheFileFromLocaldrive1()
+        {
+            // FILE UPLOADING USING SENDKEYS ....
+            IWebElement browse = Driver.FindElement(By.XPath("//input[@id='uploadfile_0']"));
+            System.Threading.Thread.Sleep(5000);
+            browse.SendKeys(@"C:\Users\dbisht\OneDrive - loanDepot\Desktop\Test1.txt");
+            Thread.Sleep(3000);
+
+            Driver.FindElement(By.Id("terms")).Click();
+            Driver.FindElement(By.Name("send")).Click();
+        }
+
+        [When(@"I Upload the file from Localdrive3")]
+        public void WhenIUploadTheFileFromLocaldrive3()
+        {
+            Thread.Sleep(5000);
+            IWebElement fromLocaiton = Driver.FindElement(By.Id("draggable"));
+            IWebElement toLocaiton = Driver.FindElement(By.Id("droppable"));
+
+            Actions actions = new Actions(Driver);
+            actions.DragAndDrop(fromLocaiton, toLocaiton).Build().Perform();
+
+            string expectedvalue = "Dropped!";
+            IWebElement actualdropped = Driver.FindElement(By.XPath(" //*[@id='droppable']/p"));
+           
+            Assert.AreEqual(actualdropped.Text, expectedvalue);
+        }
+
+        [When(@"I DoubleClick on button")]
+        public void WhenIDoubleClickOnButton()
+        {
+            Thread.Sleep(5000);
+            Actions actions = new Actions(Driver);
+            IWebElement DButton = Driver.FindElement(By.Name("dblClick"));
+            actions.DoubleClick(DButton).Perform();
+
+            Driver.SwitchTo().Alert().Dismiss();
+        }
+
+
+        [When(@"I RightClick on button")]
+        public void WhenIRightClickOnButton()
+        {
+            Thread.Sleep(5000);
+            Actions actions = new Actions(Driver);
+            IWebElement DButton = Driver.FindElement(By.Name("dblClick"));
+            actions.ContextClick(DButton).Perform();
+
+            // Driver.SwitchTo().Alert().Dismiss();
+        }
+
+    }
