@@ -1,0 +1,14 @@
+ /// <summary>
+    /// HomePage Class declaration.
+    /// </summary>
+    public class HomePageObjects
+    {
+        private readonly IWebDriver webDriver;
+
+        /
+        public HomePage(IWebDriver driver) => this.webDriver = driver;
+
+        /// <summary>
+        /// Gets element for select report type button.
+        /// </summary>
+        private IWebElement FieldNmae => this.webDriver.FindElement(By.XPath("//span[contains(text(),'Select Type')]"));
