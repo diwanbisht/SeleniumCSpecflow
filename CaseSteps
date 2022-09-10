@@ -1,0 +1,36 @@
+
+
+using System;
+using System.Collections.Generic;
+using D365.SpecFlowBindings;
+using Microsoft.Dynamics365.UIAutomation.UwOps.ObjectsRepos;
+using TechTalk.SpecFlow;
+
+namespace D365UITests.Steps
+{
+    [Binding]
+    public sealed class AdminSteps : StepDefiner
+    {
+        private readonly Admin adminForm;
+        private readonly CaseForm caseForm;
+
+        public AdminSteps()
+        {
+            this.adminForm = new Admin(Client);
+            this.caseForm = new CaseForm(Client);
+        }
+
+        [When(@"I select random '(.*)' from AdminType drop down list")]
+        public void WhenISelectRandomFromAdminTypeDropDownList(string p0)
+        {
+            adminForm.SelectRandomAdminRequestType(p0);
+        }
+
+        [When(@"I select random '(.*)' from Admin Channel drop down list")]
+        public void WhenISelectRandomFromAdminChannelDropDownList(string p0)
+        {
+            adminForm.SelectChannelType(p0);
+        }
+
+    }
+}
